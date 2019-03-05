@@ -27,6 +27,11 @@ func isContain(s []string, key string) bool {
 }
 
 func (sm *StateMachine) addState(state State) []State {
+	if state == "[*]" {
+		if isContain(sm.States, "Start") != true {
+			sm.addState("Start")
+		}
+	}
 	if isContain(sm.States, state) == true {
 		return sm.States
 	}
