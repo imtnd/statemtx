@@ -30,12 +30,12 @@ func (sm *StateMachine) addState(state State) []State {
 	if state == "[*]" {
 		if isContain(sm.States, "Start") != true {
 			sm.addState("Start")
+		} else {
+			sm.addState("End")
 		}
+	} else if isContain(sm.States, state) != true {
+		sm.States = append(sm.States, state)
 	}
-	if isContain(sm.States, state) == true {
-		return sm.States
-	}
-	sm.States = append(sm.States, state)
 	return sm.States
 }
 
