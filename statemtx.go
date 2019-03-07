@@ -40,12 +40,9 @@ func readUMLFile(fname string) {
 	for scanner.Scan() {
 		analyzeLine(scanner.Text())
 	}
-	fmt.Println(stateMachineInfo.States)
-	fmt.Println(stateMachineInfo.Events)
 }
 
 func makeMatrix(fname string) {
-	fmt.Println("hoge")
 	readUMLFile(fname)
-
+	makeXlsx(stateMachineInfo)
 }
