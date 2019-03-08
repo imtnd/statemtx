@@ -19,9 +19,14 @@ func makeXlsx(sm StateMachine) {
 	if err != nil {
 		fmt.Printf(err.Error())
 	}
-	row = sheet.AddRow()
+	row = sheet.Row(0)
 	cell = row.AddCell()
-	cell.Value = "test"
+	cell = row.AddCell()
+	cell.Value = "State"
+	for i, _ := range sm.States {
+		cell = row.AddCell()
+		cell.SetValue(i)
+	}
 	err = file.Save("./sample.xlsx")
 	if err != nil {
 		fmt.Printf(err.Error())
