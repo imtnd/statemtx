@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/tealeg/xlsx"
+	"strconv"
 )
 
 func makeXlsx(sm StateMachine) {
@@ -10,8 +11,6 @@ func makeXlsx(sm StateMachine) {
 
 	var file *xlsx.File
 	var sheet *xlsx.Sheet
-	var row *xlsx.Row
-	var cell *xlsx.Cell
 	var err error
 
 	file = xlsx.NewFile()
@@ -19,16 +18,20 @@ func makeXlsx(sm StateMachine) {
 	if err != nil {
 		fmt.Printf(err.Error())
 	}
-	row = sheet.Row(0)
-	cell = row.AddCell()
-	cell = row.AddCell()
-	cell.Value = "State"
-	for i, _ := range sm.States {
-		cell = row.AddCell()
-		cell.SetValue(i)
-	}
+	addStateNameLine(sheet)
 	err = file.Save("./sample.xlsx")
 	if err != nil {
 		fmt.Printf(err.Error())
 	}
+}
+
+func addStateNameLine(s *xlsx.Sheet) {
+	row := s.Row(0)
+	cell := row.AddCell()
+	cell.Value = "Event \\ State"
+	for i, v := range stateMachineInfo.States {
+		cell = row.AddCell()
+		cell.SetValue(strconv.Itoa(i) + ":" + v)
+	}
+
 }
