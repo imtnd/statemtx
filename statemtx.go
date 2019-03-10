@@ -44,5 +44,5 @@ func readUMLFile(fname string) {
 
 func makeMatrix(fname string) {
 	readUMLFile(fname)
-	makeXlsx(stateMachineInfo)
+	makeXlsx()
 }

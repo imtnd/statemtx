@@ -1,14 +1,10 @@
 package main
 
-type State = string
-type Event = string
-
+// StateMachine is state machine information
 type StateMachine struct {
-	States []State
-	Events []Event
+	States []string
+	Events []string
 }
-
-var stateMachineInfo StateMachine
 
 func isContain(s []string, key string) bool {
 	for _, v := range s {
@@ -19,7 +15,7 @@ func isContain(s []string, key string) bool {
 	return false
 }
 
-func (sm *StateMachine) addState(state State) []State {
+func (sm *StateMachine) addState(state string) []string {
 	if state == "[*]" {
 		if isContain(sm.States, "Start") != true {
 			sm.addState("Start")
@@ -32,7 +28,7 @@ func (sm *StateMachine) addState(state State) []State {
 	return sm.States
 }
 
-func (sm *StateMachine) addEvent(event Event) []Event {
+func (sm *StateMachine) addEvent(event string) []string {
 	if isContain(sm.Events, event) == true {
 		return sm.Events
 	}
