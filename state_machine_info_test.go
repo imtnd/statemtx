@@ -52,10 +52,22 @@ func TestStateMachine_addState(t *testing.T) {
 	}{
 		// TODO: Add test cases.
 		{
+			name:   "add Start",
+			fields: fields{nil, nil},
+			args:   args{"[*]"},
+			want:   []string{"Start"},
+		},
+		{
 			name:   "add state",
-			fields: fields{[]string{""}, []string{""}},
+			fields: fields{[]string{"Start"}, []string{""}},
 			args:   args{"hoge"},
-			want:   []string{"", "hoge"},
+			want:   []string{"Start", "hoge"},
+		},
+		{
+			name:   "add End",
+			fields: fields{[]string{"Start", "hoge"}, []string{""}},
+			args:   args{"[*]"},
+			want:   []string{"Start", "hoge", "End"},
 		},
 	}
 	for _, tt := range tests {
