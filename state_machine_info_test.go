@@ -98,6 +98,18 @@ func TestStateMachine_addEvent(t *testing.T) {
 		want   []string
 	}{
 		// TODO: Add test cases.
+		{
+			name:   "add Event1",
+			fields: fields{nil, nil},
+			args:   args{"Event1"},
+			want:   []string{"Event1"},
+		},
+		{
+			name:   "add Event2",
+			fields: fields{nil, []string{"Event1"}},
+			args:   args{"Event2"},
+			want:   []string{"Event1", "Event2"},
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
