@@ -29,9 +29,8 @@ func (sm *StateMachine) addState(state string) []string {
 }
 
 func (sm *StateMachine) addEvent(event string) []string {
-	if isContain(sm.Events, event) == true {
-		return sm.Events
+	if isContain(sm.Events, event) != true {
+		sm.Events = append(sm.Events, event)
 	}
-	sm.Events = append(sm.Events, event)
 	return sm.Events
 }
