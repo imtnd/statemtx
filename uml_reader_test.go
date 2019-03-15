@@ -13,9 +13,14 @@ func Test_analyzeLine(t *testing.T) {
 	}{
 		// TODO: Add test cases.
 		{
-			name:  "inContain retrun true",
-			args:  args{"[*] -- > second"},
+			name:  "analyzeLine analyze state",
+			args:  args{"[*] -> second"},
 			wants: []string{"Start", "second"},
+		},
+		{
+			name:  "analyzeLine analyze header",
+			args:  args{"@startuml{test.png}"},
+			wants: nil,
 		},
 	}
 	for _, tt := range tests {
