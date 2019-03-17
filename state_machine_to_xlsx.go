@@ -8,14 +8,8 @@ import (
 )
 
 func makeXlsx() {
-	fmt.Println(stateMachineInfo)
-
-	var file *xlsx.File
-	var sheet *xlsx.Sheet
-	var err error
-
-	file = xlsx.NewFile()
-	sheet, err = file.AddSheet("Sheet1")
+	file := xlsx.NewFile()
+	sheet, err := file.AddSheet("Sheet1")
 	if err != nil {
 		fmt.Printf(err.Error())
 	}
@@ -27,7 +21,7 @@ func makeXlsx() {
 	}
 }
 
-func addStateNameLine(s *xlsx.Sheet) {
+func addStateNameLine(s *xlsx.Sheet) *xlsx.Sheet {
 	row := s.Row(0)
 	cell := row.AddCell()
 	cell.Value = "Event \\ State"
@@ -35,12 +29,14 @@ func addStateNameLine(s *xlsx.Sheet) {
 		cell = row.AddCell()
 		cell.SetValue(strconv.Itoa(i) + ":" + v)
 	}
+	return s
 }
 
-func addEventNameLine(s *xlsx.Sheet) {
+func addEventNameLine(s *xlsx.Sheet) *xlsx.Sheet {
 	for i, v := range stateMachineInfo.Events {
 		row := s.Row(1 + i)
 		cell := row.AddCell()
 		cell.Value = v
 	}
+	return s
 }
