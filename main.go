@@ -10,7 +10,7 @@ var outputFileName string
 var stateMachineInfo StateMachine
 
 func usage() {
-	fmt.Println("usage: ")
+	fmt.Println("usage: statemtx [/path/to/umlfile]")
 
 }
 
@@ -19,6 +19,7 @@ func main() {
 	args := flag.NArg()
 	if args != 1 {
 		usage()
+		return
 	}
 
 	arg := flag.Arg(0)
