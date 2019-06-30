@@ -7,7 +7,7 @@ It makes a excel file of state machine matrix from uml file.
 # go get -u github.com/imtnd/statemtx
 ```
 
-## Howt to use
+## How to use
 ```
 # statemtx /path/to/umlfilename
 ```
