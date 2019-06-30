@@ -2,12 +2,12 @@
 It makes a excel file of state machine matrix from uml file.
 
 
-## how to install
+## How to install
 ```
 # go get -u github.com/imtnd/statemtx
 ```
 
-## howt to use
+## Howt to use
 ```
 # statemtx /path/to/umlfilename
 ```
