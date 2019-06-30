@@ -1,10 +1,24 @@
 # statemtx
 this program unfinished.
 
-make excel file of state machine matrix from uml file
+It makes a excel file of state machine matrix from uml file.
 
-## how to use
 
+## how to install
 ```
-$ go run main.go [umlfilename]
+# go get -u github.com/imtnd/statemtx
 ```
+
+## howt to use
+```
+# statemtx /path/to/umlfilename
+```
+
+## Tutorial
+* Execute the following command.
+```
+$ statemtx sample_statemachine/sample.pu
+```
+
+* You can get sample.xlsx file in current directory.
+  
