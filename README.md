@@ -1,6 +1,4 @@
 # statemtx
-this program unfinished.
-
 It makes a excel file of state machine matrix from uml file.
 
 
